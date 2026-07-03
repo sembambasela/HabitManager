@@ -5,6 +5,7 @@ import com.habitmanager.database.DatabaseConnection;
 import com.habitmanager.model.Habit;
 import com.habitmanager.model.HabitType;
 import com.habitmanager.service.HabitService;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,5 +16,11 @@ public class Main {
 
         System.out.println("Habit Manager is ready.");
         System.out.println("Created habit: " + habit);
+
+        List<Habit> habits = habitService.getAllHabits();
+        System.out.println("All habits:");
+        for (Habit savedHabit : habits) {
+            System.out.println(savedHabit);
+        }
     }
 }

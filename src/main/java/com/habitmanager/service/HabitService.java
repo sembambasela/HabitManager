@@ -3,6 +3,7 @@ package com.habitmanager.service;
 import com.habitmanager.dao.HabitDao;
 import com.habitmanager.model.Habit;
 import com.habitmanager.model.HabitType;
+import java.util.List;
 
 public class HabitService {
     private final HabitDao habitDao;
@@ -19,6 +20,10 @@ public class HabitService {
         HabitType safeType = type == null ? HabitType.NEUTRAL : type;
         Habit habit = new Habit(name.trim(), cleanCategory(category), safeType);
         return habitDao.insert(habit);
+    }
+
+    public List<Habit> getAllHabits() {
+        return habitDao.findAll();
     }
 
     private String cleanCategory(String category) {
